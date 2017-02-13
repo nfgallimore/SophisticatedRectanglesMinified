@@ -62,7 +62,6 @@ double Rectangle::length() {
 }
 // width is smallest side
 double Rectangle::width() {
-
 	double width1 = sqrt((a2.x - a1.x) * (a2.x - a1.x) + (a2.y - a1.y) * (a2.y - a1.y));
 	double width2 = sqrt((a3.x - a1.x) * (a3.x - a1.x) + (a3.y - a1.y) * (a3.y - a1.y));
 	double width3 = sqrt((a4.x - a1.x) * (a4.x - a1.x) + (a4.y - a1.y) * (a4.y - a1.y));
@@ -131,7 +130,7 @@ bool Rectangle::isValidRectangle(Point p1, Point p2, Point p3, Point p4) {
 		}
 		{
 			// should really throw an exception here but ... another day another time @TODO
-			std::cout << "\nError: Rectangle is not within first quadrant. 0 is not in any quadrant. Cannot assign inputted values.";
+			std::cout << "\nError: Rectangle is not within first quadrant. Cannot assign inputted values.";
 			return false;
 		}
 	}
