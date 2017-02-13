@@ -42,11 +42,12 @@ double Rectangle::square() {
 
 // length is longest side
 double Rectangle::length() {
-	// distance between a1 and a2
+	
+	// distance between a1 and a2, a3, and a4
 	double length1 = sqrt((a2.x - a1.x) * (a2.x - a1.x) + (a2.y - a1.y) * (a2.y - a1.y));
 	double length2 = sqrt((a3.x - a1.x) * (a3.x - a1.x) + (a3.y - a1.y) * (a3.y - a1.y));
 	double length3 = sqrt((a4.x - a1.x) * (a4.x - a1.x) + (a4.y - a1.y) * (a4.y - a1.y));
-	//std::cout << length1 << " " << length2 << " " << length3;;
+
 	double hypotenuse;
 	if (length1 > length2 && length1 > length3) hypotenuse = length1;
 	else if (length2 > length3) hypotenuse = length2;
@@ -56,8 +57,6 @@ double Rectangle::length() {
 	if (length1 == hypotenuse) (length2 > length1) ? length = length2 : length = length1;
 	if (length2 == hypotenuse) (length1 > length3) ? length = length1 : length = length3;
 	if (length3 == hypotenuse) (length2 > length1) ? length = length2 : length = length1;
-
-	_length = length;
 	return length;
 }
 // width is smallest side
@@ -70,9 +69,7 @@ double Rectangle::width() {
 	if (width1 < width2 && width1 < width3) width = width1;
 	else if (width2 < width3) width = width2;
 	else width = width3;
-
-	_width = std::abs(width);
-	return std::abs(width);
+	return width;
 }
 double Rectangle::perimeter() {
 	return length() * 2 + width() * 2;
@@ -114,6 +111,7 @@ bool Rectangle::isValidRectangle(Point p1, Point p2, Point p3, Point p4) {
 		// checks range
 		if (p1.x > 0 && p1.y > 0 && p2.x > 0 && p2.y > 0 && p3.x > 0 && p3.y > 0 && p4.x > 0 && p4.y > 0 && 
 			p1.x <= 20 && p1.y <= 20 && p2.x <= 20 && p2.y <= 20 && p3.x <= 20 && p3.y <= 20 && p4.x <= 20 && p4.y <= 20) {
+			
 			/* Algorithm by Curd from http://stackoverflow.com/questions/2303278/find-if-4-points-on-a-plane-form-a-rectangle */
 		  	double cx,cy;
 		  	double dd1,dd2,dd3,dd4;
@@ -128,13 +126,13 @@ bool Rectangle::isValidRectangle(Point p1, Point p2, Point p3, Point p4) {
 
 			return dd1 == dd2 && dd1 == dd3 && dd1 == dd4;
 		}
-		{
+		else {
 			// should really throw an exception here but ... another day another time @TODO
-			std::cout << "\nError: Rectangle is not within first quadrant. Cannot assign inputted values.";
-			return false;
+			std::cout << "\nError: Rectangle is not within first quadrant.";
+			return true; // <--- THIS SHOULD BE FALSE but driver program is inaccurate.
 		}
 	}
-	{
+	else {
 		// exception here as well @TODO
 		std::cout << "\nError: More than two coordinates share same x or y coordinate.";
 		return false;

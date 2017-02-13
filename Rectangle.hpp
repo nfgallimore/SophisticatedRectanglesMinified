@@ -10,7 +10,6 @@ class Rectangle
 private:
 	Point a1, a2, a3, a4;
 	bool isValidRectangle(Point p1, Point p2, Point p3, Point p4);
-	double _width, _length;
 
 public:
 	double length();
