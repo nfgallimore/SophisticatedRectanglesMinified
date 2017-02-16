@@ -24,7 +24,10 @@ int main() {
    Point k{1.0, 0.0};
    Point m{1.0, 1.0};
    Point n{0.0, 1.0};
+   Point test1{1.0, 4.0}, test2{1.0,4.0}, test3{2,3}, test4{2,3.5};
 
+   Rectangle r{test1, test2, test3, test4};
+   r.printRect();
    Rectangle r1{z, y, x, w};
    std::cout << "Rectangle 1:\n";
    std::cout << "length = " << r1.length();
